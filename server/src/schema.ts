@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-const typeDefs = gql`
+export const typeDefs = gql`
   type Query {
     "Query to get all tracks"
     tracksForHome: [Track!]!
@@ -29,4 +29,5 @@ const typeDefs = gql`
     photo: String
   }
 `;
-module.exports = typeDefs;
+
+module.exports = { typeDefs };
