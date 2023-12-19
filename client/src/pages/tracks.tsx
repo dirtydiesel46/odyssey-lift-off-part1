@@ -1,6 +1,7 @@
 import React from "react";
 import { Layout } from "../components";
 import { gql } from "../__generated__";
+import { useQuery } from "@apollo/client";
 
 /**
  * Tracks Page is the Catstronauts home page.
@@ -22,5 +23,11 @@ query GetTracks {
   }
 }`);
 
+const Tracks = () => {
+  const { loading, error, data } = useQuery(TRACKS);
 
-export default TRACKS;
+  if (loading) return "Loading...";
+  if (error) return `Error! ${error.message}`;
+  return <Layout grid>{JSON.stringify(data)}</Layout>;
+};
+export default Tracks;
